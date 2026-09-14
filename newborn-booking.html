@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ニューボーンフォト ご予約｜arisa newborn photo</title>
   <link rel="stylesheet" href="style.css?v=107" />
+  <style>.br-sp{display:none}@media(max-width:560px){.br-sp{display:inline}.done-msg{font-size:14px;letter-spacing:.02em}}</style>
 </head>
 <body>
   <header class="nav"><div class="container nav-inner"><div class="brand"><a href="index.html">arisa newborn photo</a></div><input id="nav-toggle" class="nav-checkbox" type="checkbox" /><label class="nav-toggle" for="nav-toggle" aria-label="メニューを開閉"><span></span><span></span><span></span></label><nav class="nav-links"><a href="index.html">Home</a><a href="index.html#service">Menu</a><a href="photogoods.html">Goods</a><a href="portfolio.html">Portfolio</a><a href="profile.html">Profile</a><a href="index.html#contact">Contact</a></nav></div></header>
   <main>
-    <div class="page-head container"><a class="backlink" href="newborn.html">ニューボーンフォトのページに戻る</a><div style="margin-top:18px"><span class="eyebrow">Newborn reservation</span><h1>ニューボーンフォトご予約</h1><p id="formIntro">妊娠おめでとうございます☺️<br>ご予約をご希望の方は、こちらのフォームに入力して送信してくださいね♪<br>わからない点などあればお気軽にご連絡ください😊</p><div class="page-head-image"><img src="写真フォルダ/photo/頬杖.jpg" alt="ニューボーンフォト" style="height:320px;object-fit:cover;object-position:center 40%"></div></div></div>
+    <div class="page-head container"><a class="backlink" href="newborn.html">ニューボーンフォトのページに戻る</a><div id="headBlock" style="margin-top:18px"><span class="eyebrow">Newborn reservation</span><h1>ニューボーンフォト<br class="br-sp">ご予約</h1><p id="formIntro" style="text-align:center">妊娠おめでとうございます♪<br>ご予約をご希望の方は<br>こちらのフォームに入力して送信してください</p><div class="page-head-image"><img src="写真フォルダ/photo/頬杖.jpg" alt="ニューボーンフォト" style="height:320px;object-fit:cover;object-position:center 40%"></div></div></div>
 
     <section><div class="container">
       <form id="bookForm" class="form-wrap" novalidate>
@@ -160,9 +161,7 @@
       <div id="formDone" class="form-done" hidden>
         <span class="eyebrow">Thank you</span>
         <h2>ご予約リクエストを受け付けました</h2>
-        <p>ご入力のメールアドレスに、受付内容の控えをお送りしました。<br>このあと、いただいた内容をもとに<b>公式LINEよりこちらからご連絡</b>いたします。<br>そのご連絡をもって<b>最終のご予約確定</b>となります。</p>
-        <p style="margin-top:16px">まだ公式LINEをご登録でない方は、こちらから友だち追加をお願いします。</p>
-        <p style="margin-top:18px"><a class="btn line" href="https://lin.ee/nrPaFDa" target="_blank" rel="noreferrer">公式LINEを友だち追加</a></p>
+        <p class="done-msg">ご入力のメールアドレスに、<br>受付内容の控えをお送りしました。<br>このあと、いただいた内容をもとに<br><b>公式LINEよりこちらからご連絡</b>いたします。<br>そのご連絡をもって<br><b>最終のご予約確定</b>となります。</p>
         <p style="margin-top:22px"><a class="service-link" href="index.html">トップページに戻る</a></p>
       </div>
     </div></section>
@@ -317,8 +316,8 @@
       fetch(WEBHOOK_URL, { method: "POST", mode: "no-cors", body: params })
         .then(function () {
           form.hidden = true;
-          var intro = document.getElementById("formIntro");
-          if (intro) { intro.hidden = true; }
+          var ph = document.querySelector(".page-head");
+          if (ph) { ph.hidden = true; }
           doneEl.hidden = false;
           window.scrollTo({ top: 0, behavior: "smooth" });
         })
