@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ニューボーンフォト ご予約｜arisa newborn photo</title>
+  <link rel="stylesheet" href="style.css?v=95" />
+</head>
+<body>
+  <header class="nav"><div class="container nav-inner"><div class="brand"><a href="index.html">arisa newborn photo</a></div><input id="nav-toggle" class="nav-checkbox" type="checkbox" /><label class="nav-toggle" for="nav-toggle" aria-label="メニューを開閉"><span></span><span></span><span></span></label><nav class="nav-links"><a href="index.html">Home</a><a href="index.html#service">Menu</a><a href="photogoods.html">Goods</a><a href="portfolio.html">Portfolio</a><a href="profile.html">Profile</a><a href="index.html#contact">Contact</a></nav></div></header>
+  <main>
+    <div class="page-head container"><a class="backlink" href="newborn.html">ニューボーンフォトのページに戻る</a><div style="margin-top:18px"><span class="eyebrow">Newborn reservation</span><h1>ニューボーンフォトご予約</h1><p id="formIntro">妊娠おめでとうございます☺️<br>ご予約をご希望の方は、こちらのフォームに入力して送信してくださいね♪<br>わからない点などあればお気軽にご連絡ください😊</p><div class="page-head-image"><img src="写真フォルダ/photo/頬杖.jpg" alt="ニューボーンフォト" style="height:320px;object-fit:cover;object-position:center 40%"></div></div></div>
+
+    <section><div class="container">
+      <form id="bookForm" class="form-wrap" novalidate>
+
+        <div class="form-agree">
+          <h3>撮影に関する利用規約・キャンセルポリシーについて</h3>
+          <div class="links">
+            <a href="https://friendly-pudding-f16.notion.site/2e8e9930523b80b996f8cd3644432b42" target="_blank" rel="noreferrer">▶︎利用規約</a>
+            <a href="https://friendly-pudding-f16.notion.site/2e8e9930523b802dabafe83411f1c668" target="_blank" rel="noreferrer">▶︎キャンセルポリシー</a>
+          </div>
+          <label><input type="checkbox" id="f-agree" name="agree" value="同意する" required>内容を確認し、同意のうえ予約します</label>
+        </div>
+
+        <div class="form-field">
+          <label for="f-name">お名前<span class="req">必須</span></label>
+          <input type="text" id="f-name" name="name" required autocomplete="name">
+        </div>
+        <div class="form-field">
+          <label for="f-linename">LINEのお名前</label>
+          <input type="text" id="f-linename" name="line_name">
+        </div>
+        <div class="form-field">
+          <label for="f-contact">連絡先</label>
+          <input type="tel" id="f-contact" name="contact" autocomplete="tel">
+        </div>
+        <div class="form-field">
+          <label for="f-email">メールアドレス<span class="req">必須</span></label>
+          <input type="email" id="f-email" name="email" required autocomplete="email">
+          <p class="form-hint">ご入力のアドレスに受付内容の控えをお送りします。</p>
+        </div>
+        <div class="form-field">
+          <label for="f-address">撮影希望の住所</label>
+          <div class="zip-inline">
+            <input type="text" id="f-zip" name="zip" inputmode="numeric" maxlength="8" autocomplete="postal-code" placeholder="郵便番号（例：8300033）">
+            <button type="button" id="zipBtn">交通費を計算</button>
+          </div>
+          <input type="text" id="f-address" name="address" placeholder="住所（番地・建物名まで）" style="margin-top:8px">
+          <p class="form-hint">郵便番号を入れて「交通費を計算」を押すと、交通費の目安が料金に反映されます。番地・建物名まで記載ください。</p>
+          <p id="zipResult" class="form-hint" style="margin-top:6px"></p>
+        </div>
+
+        <div class="form-field">
+          <label>駐車場</label>
+          <div class="choice-list">
+            <label><input type="radio" name="parking" value="有">有</label>
+            <label><input type="radio" name="parking" value="近隣に有料駐車場あり">近隣に有料駐車場あり</label>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="f-due">出産予定日</label>
+          <input type="date" id="f-due" name="due_date">
+          <p class="form-hint">出産後の方は、出産日をご記入ください</p>
+        </div>
+
+        <div class="form-field">
+          <label>ご希望のプラン</label>
+          <p class="form-hint" style="margin-top:0;margin-bottom:10px">撮影日までに決めていただければ大丈夫です☺️</p>
+          <div class="choice-list">
+            <label><input type="radio" name="plan" value="ミニプラン 35000円">ミニプラン　35000円</label>
+            <label><input type="radio" name="plan" value="スタンダード 42000円">スタンダード　42000円</label>
+            <label><input type="radio" name="plan" value="スペシャル 66000円">スペシャル　66000円</label>
+            <label><input type="radio" name="plan" value="悩み中">悩み中</label>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label>オプション</label>
+          <p class="form-hint" style="margin-top:0;margin-bottom:10px">あてはまるものをすべてお選びください</p>
+          <div class="choice-grid">
+            <label><input type="checkbox" name="options" value="なし">なし</label>
+            <label><input type="checkbox" name="options" value="土日、祝日、年末年始 3000円">土日、祝日、年末年始　3000円</label>
+            <label><input type="checkbox" name="options" value="プチ生花 3000円">プチ生花　3000円</label>
+            <label><input type="checkbox" name="options" value="生花 5000円">生花　5000円</label>
+            <label><input type="checkbox" name="options" value="双子 10000円">双子　10000円</label>
+            <label><input type="checkbox" name="options" value="5カット追加 5000円">5カット追加　5000円</label>
+          </div>
+          <p class="form-hint" style="margin-top:10px">※スペシャルプランをお選びの場合、プチ生花・生花はプラン内に含まれます（オプション料金はかかりません）。</p>
+        </div>
+
+        <div class="form-field">
+          <label>希望ポーズ</label>
+          <div class="pose-plan"><span>ミニ<b>2ポーズ</b></span><span>スタンダード<b>3ポーズ</b></span><span>スペシャル<b>5ポーズ</b></span></div>
+          <p class="form-hint" style="margin-top:0;margin-bottom:10px">当日までに決めていただいても構いません☺️</p>
+          <p class="pose-limit" id="poseLimit">まずはご希望のプランをお選びください（プランに応じて選べる数が変わります）</p>
+          <div class="pose-select">
+            <label class="pose-opt"><input type="checkbox" name="poses" value="1.おくるみかご"><img src="写真フォルダ/photo/カゴ1.jpg" alt="おくるみかご"><span>1.おくるみかご</span></label>
+            <label class="pose-opt"><input type="checkbox" name="poses" value="2.おくるみ布"><img src="写真フォルダ/photo/おくるみ布.jpg" alt="おくるみ布"><span>2.おくるみ布</span></label>
+            <label class="pose-opt"><input type="checkbox" name="poses" value="3.ミノムシ"><img src="写真フォルダ/photo/ミノムシ1.jpg" alt="ミノムシ"><span>3.ミノムシ</span></label>
+            <label class="pose-opt"><input type="checkbox" name="poses" value="4.お布団"><img src="写真フォルダ/photo/お布団1.jpg" alt="お布団"><span>4.お布団</span></label>
+            <label class="pose-opt"><input type="checkbox" name="poses" value="5.頬杖"><img src="写真フォルダ/photo/頬杖.jpg" alt="頬杖"><span>5.頬杖</span></label>
+            <label class="pose-opt"><input type="checkbox" name="poses" value="6.あごのせ"><img src="写真フォルダ/photo/チンオン.jpg" alt="あごのせ"><span>6.あごのせ</span></label>
+            <label class="pose-opt"><input type="checkbox" name="poses" value="7.全身"><img src="写真フォルダ/photo/はだかんぼ.jpg" alt="全身"><span>7.全身</span></label>
+            <label class="pose-opt"><input type="checkbox" name="poses" value="8.きょうだい"><img src="写真フォルダ/photo/兄弟1.jpg" alt="きょうだい"><span>8.きょうだい</span></label>
+            <label class="pose-opt"><input type="checkbox" name="poses" value="9.家族"><img src="写真フォルダ/photo/家族.jpg" alt="家族"><span>9.家族</span></label>
+          </div>
+          <div class="choice-list" style="margin-top:12px">
+            <label><input type="checkbox" name="poses" value="悩み中">悩み中（当日までに相談して決めたい）</label>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label>SNS・広告掲載</label>
+          <p class="form-hint" style="margin-top:0;margin-bottom:10px">SNSや広告などに写真を使用可能か</p>
+          <div class="choice-list">
+            <label><input type="radio" name="sns" value="NG">NG</label>
+            <label><input type="radio" name="sns" value="顔以外OK（手や足など）">顔以外OK（手や足など）</label>
+            <label><input type="radio" name="sns" value="家族全員OK">家族全員OK</label>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label>支払い方法</label>
+          <p class="form-hint" style="margin-top:0;margin-bottom:10px">基本的に事前に銀行振込のみとさせていただいております。<br>諸事情などで入金が難しい場合は遠慮なくご相談ください♪</p>
+          <div class="choice-list">
+            <label><input type="radio" name="payment" value="銀行振込">銀行振込</label>
+            <label><input type="radio" name="payment" value="当日現金">当日現金</label>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="f-insta">Instagramのアカウント名</label>
+          <input type="text" id="f-insta" name="instagram">
+          <p class="form-hint">もしアカウントがあればでOKです</p>
+        </div>
+
+        <div class="form-field">
+          <label for="f-notes">その他ご希望や質問などあればどうぞ☺️</label>
+          <textarea id="f-notes" name="notes"></textarea>
+        </div>
+
+        <div class="form-field">
+          <label>料金の目安</label>
+          <div class="form-total"><span>合計料金</span><strong id="estTotal">プランをお選びください</strong></div>
+          <div class="est-breakdown">
+            <div><span>プラン</span><span id="estPlan">—</span></div>
+            <div><span>オプション</span><span id="estOptions">—</span></div>
+            <div><span>交通費目安</span><span id="estTravel">未計算</span></div>
+          </div>
+          <p class="form-hint" style="margin-top:10px">※こちらはあくまで目安です。正式な料金は、ご予約確定の折り返しご連絡の際にお伝えいたします。</p>
+        </div>
+
+        <button type="submit" id="submitBtn" class="form-submit">送信する</button>
+        <p class="form-hint" style="text-align:center;margin-top:14px">送信後、ご入力のメールアドレスへ控えを自動でお送りします。<br>その後、公式LINEよりこちらからご連絡し、最終のご予約確定となります。</p>
+        <p id="formError" class="form-error"></p>
+      </form>
+
+      <div id="formDone" class="form-done" hidden>
+        <span class="eyebrow">Thank you</span>
+        <h2>ご予約リクエストを受け付けました</h2>
+        <p>ご入力のメールアドレスに、受付内容の控えをお送りしました。<br>このあと、いただいた内容をもとに<b>公式LINEよりこちらからご連絡</b>いたします。<br>そのご連絡をもって<b>最終のご予約確定</b>となります。</p>
+        <p style="margin-top:16px">まだ公式LINEをご登録でない方は、こちらから友だち追加をお願いします。</p>
+        <p style="margin-top:18px"><a class="btn line" href="https://lin.ee/nrPaFDa" target="_blank" rel="noreferrer">公式LINEを友だち追加</a></p>
+        <p style="margin-top:22px"><a class="service-link" href="index.html">トップページに戻る</a></p>
+      </div>
+    </div></section>
+  </main>
+  <footer class="footer">© arisa newborn photo / Fukuoka Kurume</footer>
+  <script>
+  (function () {
+    /* ▼ MakeのWebhook URLをここに貼り付けてください（例: https://hook.eu2.make.com/xxxxxxxx） */
+    var WEBHOOK_URL = "";
+
+    var form = document.getElementById("bookForm");
+    var doneEl = document.getElementById("formDone");
+    var errEl = document.getElementById("formError");
+    var btn = document.getElementById("submitBtn");
+
+    /* プランに応じてポーズの選択上限を制御 */
+    var poseBoxes = form.querySelectorAll('input[name="poses"]');
+    var poseLimitEl = document.getElementById("poseLimit");
+
+    function planLabel() {
+      var p = form.querySelector('input[name="plan"]:checked');
+      return p ? p.value : "";
+    }
+    function poseMax() {
+      var p = planLabel();
+      if (p.indexOf("ミニ") > -1) return 2;
+      if (p.indexOf("スタンダード") > -1) return 3;
+      if (p.indexOf("スペシャル") > -1) return 5;
+      return 5; /* 悩み中・未選択 */
+    }
+    function poseNum(v) { var m = (v || "").match(/^(\d+)\./); return m ? parseInt(m[1], 10) : 0; }
+    function isMini() { return planLabel().indexOf("ミニ") > -1; }
+    function updatePoseLimitNote() {
+      var p = planLabel();
+      var max = poseMax();
+      if (!p || p.indexOf("悩み中") > -1) {
+        poseLimitEl.textContent = "プランをお選びいただくと選択できる数が確定します（現在は最大" + max + "ポーズまで）。";
+      } else if (isMini()) {
+        poseLimitEl.textContent = "現在のプラン：ミニプラン（①〜④のポーズから最大" + max + "つまで選択できます）";
+      } else {
+        poseLimitEl.textContent = "現在のプラン：" + p.replace(/\s*\d+円/, "") + "（最大" + max + "ポーズまで選択できます）";
+      }
+    }
+    function enforcePoseLimit(justChecked) {
+      // ミニプランは①〜④のポーズのみ
+      if (isMini()) {
+        var over = [].filter.call(form.querySelectorAll('input[name="poses"]:checked'), function (b) { return poseNum(b.value) >= 5; });
+        if (over.length) {
+          over.forEach(function (b) { b.checked = false; });
+          alert("ミニプランでは、①〜④のポーズからお選びいただけます。");
+        }
+      }
+      var checked = [].filter.call(form.querySelectorAll('input[name="poses"]:checked'), function (b) { return b.value !== "悩み中"; });
+      var max = poseMax();
+      if (checked.length > max) {
+        if (justChecked && justChecked.value !== "悩み中") { justChecked.checked = false; }
+        else { for (var i = checked.length - 1; i >= max; i--) { checked[i].checked = false; } }
+        alert("このプランでは、ポーズは最大" + max + "個までお選びいただけます。");
+      }
+    }
+    poseBoxes.forEach(function (box) {
+      box.addEventListener("change", function () { enforcePoseLimit(box.checked ? box : null); });
+    });
+    form.querySelectorAll('input[name="plan"]').forEach(function (r) {
+      r.addEventListener("change", function () { enforcePoseLimit(null); updatePoseLimitNote(); });
+    });
+    updatePoseLimitNote();
+
+    /* 料金の目安（プラン＋オプション） */
+    var estEl = document.getElementById("estTotal");
+    function yen(n) { return "¥" + n.toLocaleString(); }
+    function amount(str) { var m = (str || "").replace(/,/g, "").match(/(\d+)\s*円/); return m ? parseInt(m[1], 10) : 0; }
+
+    /* 交通費（郵便番号 → 距離 → 料金） */
+    var travelFee = 0, travelLabel = "";
+    var zipInput = document.getElementById("f-zip");
+    var zipBtn = document.getElementById("zipBtn");
+    var zipResult = document.getElementById("zipResult");
+    var KURUME = { lat: 33.312266, lng: 130.521143 };
+    var areaCoords = { "830":{n:"久留米市中心部",lat:33.312266,lng:130.521143},"831":{n:"久留米市周辺",lat:33.34,lng:130.55},"832":{n:"柳川市",lat:33.163,lng:130.406},"833":{n:"筑後市",lat:33.209,lng:130.508},"834":{n:"八女市",lat:33.211,lng:130.556},"835":{n:"みやま市",lat:33.152,lng:130.475},"836":{n:"大牟田市",lat:33.030,lng:130.446},"838":{n:"朝倉市",lat:33.415,lng:130.664},"839":{n:"うきは市",lat:33.325,lng:130.771},"810":{n:"福岡市中央区",lat:33.589,lng:130.402},"812":{n:"福岡市博多区",lat:33.590,lng:130.421},"814":{n:"福岡市早良区",lat:33.578,lng:130.353},"815":{n:"福岡市南区",lat:33.560,lng:130.436},"818":{n:"筑紫野市",lat:33.497,lng:130.548},"820":{n:"飯塚市",lat:33.646,lng:130.691},"840":{n:"佐賀市",lat:33.263,lng:130.301},"841":{n:"鳥栖市",lat:33.376,lng:130.507} };
+    function distKm(a,b,c,d){var R=6371,r=function(x){return x*Math.PI/180;};var dLat=r(c-a),dLng=r(d-b);var s=Math.pow(Math.sin(dLat/2),2)+Math.cos(r(a))*Math.cos(r(c))*Math.pow(Math.sin(dLng/2),2);return R*2*Math.atan2(Math.sqrt(s),Math.sqrt(1-s));}
+    function feeFrom(km){if(km<=5)return 0;if(km<=10)return 1000;if(km<=20)return 2000;if(km<=30)return 3000;if(km<=40)return 4000;if(km<=50)return 5000;return 5000;}
+    async function calcTravel(){
+      var raw=(zipInput.value||"").replace(/[^0-9]/g,"");
+      if(raw.length!==7){zipResult.textContent="郵便番号は7桁の数字で入力してください（例：8300033）";travelFee=0;travelLabel="";calcTotal();return;}
+      zipResult.textContent="交通費を計算しています…";zipBtn.disabled=true;
+      try{
+        var zr=await fetch("https://zipcloud.ibsnet.co.jp/api/search?zipcode="+raw);var zd=await zr.json();
+        if(!zd.results||!zd.results.length) throw 0;
+        var r=zd.results[0];var addr=r.address1+r.address2+r.address3;
+        var gr=await fetch("https://nominatim.openstreetmap.org/search?format=json&countrycodes=jp&limit=1&q="+encodeURIComponent("日本 "+addr));var gd=await gr.json();
+        if(!gd.length) throw 0;
+        var km=distKm(KURUME.lat,KURUME.lng,parseFloat(gd[0].lat),parseFloat(gd[0].lon));var fee=feeFrom(km);var kmR=Math.round(km*10)/10;
+        travelFee=fee;travelLabel="西鉄久留米駅から約"+kmR+"km（"+addr+"）";
+        zipResult.textContent=addr+" ／ 約"+kmR+"km → 交通費 "+(fee===0?"無料":"+"+fee.toLocaleString()+"円");
+      }catch(e){
+        var pre=raw.substring(0,3);var ar=areaCoords[pre];
+        if(ar){var km2=distKm(KURUME.lat,KURUME.lng,ar.lat,ar.lng);var fee2=feeFrom(km2);var kmR2=Math.round(km2);travelFee=fee2;travelLabel="西鉄久留米駅から約"+kmR2+"km（"+ar.n+"周辺・概算）";zipResult.textContent=ar.n+"周辺（概算） ／ 約"+kmR2+"km → 交通費 "+(fee2===0?"無料":"+"+fee2.toLocaleString()+"円");}
+        else{travelFee=0;travelLabel="";zipResult.textContent="郵便番号から距離を算出できませんでした。お手数ですが直接ご相談ください。";}
+      }
+      zipBtn.disabled=false;calcTotal();
+    }
+    zipBtn.addEventListener("click", calcTravel);
+
+    var estPlanEl = document.getElementById("estPlan");
+    var estOptEl = document.getElementById("estOptions");
+    var estTrvEl = document.getElementById("estTravel");
+    function travelText() { return travelLabel ? (travelFee === 0 ? "無料" : yen(travelFee)) : "未計算"; }
+    function calcTotal() {
+      var p = form.querySelector('input[name="plan"]:checked');
+      if (estTrvEl) estTrvEl.textContent = travelText();
+      if (!p || p.value.indexOf("悩み中") > -1) {
+        estEl.textContent = p ? "プラン確定後に算出します" : "プランをお選びください";
+        if (estPlanEl) { estPlanEl.textContent = "—"; estOptEl.textContent = "—"; }
+        return;
+      }
+      var planAmt = amount(p.value);
+      var special = p.value.indexOf("スペシャル") > -1;
+      var optAmt = 0;
+      form.querySelectorAll('input[name="options"]:checked').forEach(function (o) {
+        if (special && o.value.indexOf("生花") > -1) return; // スペシャルは生花がプラン内
+        optAmt += amount(o.value);
+      });
+      estEl.textContent = yen(planAmt + optAmt + travelFee);
+      if (estPlanEl) { estPlanEl.textContent = yen(planAmt); estOptEl.textContent = yen(optAmt); }
+    }
+    form.querySelectorAll('input[name="plan"], input[name="options"]').forEach(function (el) {
+      el.addEventListener("change", calcTotal);
+    });
+    calcTotal();
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      errEl.textContent = "";
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      if (!WEBHOOK_URL) { errEl.textContent = "送信先が未設定です。お手数ですが公式LINEよりご連絡ください。"; return; }
+
+      var params = new URLSearchParams();
+      params.append("menu", "ニューボーンフォト");
+      var multi = { options: [], poses: [] };
+      new FormData(form).forEach(function (v, k) {
+        if (k === "options" || k === "poses") { multi[k].push(v); } else { params.append(k, v); }
+      });
+      params.append("options", multi.options.join("、"));
+      params.append("poses", multi.poses.join("、"));
+      params.append("estimate", estEl.textContent);
+      params.append("travel", travelLabel ? (travelLabel + (travelFee ? " +" + travelFee + "円" : " 無料")) : "未計算");
+
+      btn.disabled = true;
+      btn.textContent = "送信中…";
+
+      fetch(WEBHOOK_URL, { method: "POST", mode: "no-cors", body: params })
+        .then(function () {
+          form.hidden = true;
+          var intro = document.getElementById("formIntro");
+          if (intro) { intro.hidden = true; }
+          doneEl.hidden = false;
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        })
+        .catch(function () {
+          errEl.textContent = "送信に失敗しました。時間をおいて再度お試しいただくか、公式LINEよりご連絡ください。";
+          btn.disabled = false;
+          btn.textContent = "送信する";
+        });
+    });
+  })();
+  </script>
+</body>
+</html>
