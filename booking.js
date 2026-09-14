@@ -94,3 +94,34 @@
     updateFab();
   }
 })();
+
+/* 上品なスクロールアニメーション（下からふわっとフェードイン） */
+(function () {
+  try {
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!("IntersectionObserver" in window)) return;
+    var sel = ".section-title,.pf-heading,.plan,.service,.intro-card,.info-card,.goods-card,.goods-image,.goods-content,.step,.pose-item,.portfolio-item,.story-carousel,.profile-table,.pf-message,.hero-card,.faq details";
+    var els = [].slice.call(document.querySelectorAll(sel));
+    if (!els.length) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("is-visible"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -6% 0px" });
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    els.forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.top < vh && r.bottom > 0) return; // 既に画面内のものはアニメなし（チラつき防止）
+      var p = el.parentElement;
+      if (p) {
+        var sibs = [].slice.call(p.children).filter(function (c) { return c.matches && c.matches(sel); });
+        var i = sibs.indexOf(el);
+        if (i > 0) el.style.transitionDelay = (Math.min(i, 3) * 0.09) + "s";
+      }
+      el.classList.add("reveal");
+      io.observe(el);
+    });
+  } catch (err) {
+    try { document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("is-visible"); }); } catch (e) {}
+  }
+})();
