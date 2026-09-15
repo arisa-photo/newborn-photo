@@ -83,6 +83,17 @@
         [].forEach.call(tabs.children, function(x){ x.classList.toggle("is-active", x === b); });
         render();
       });
+      // URLの ?genre=◯◯ で最初に表示するジャンルを選択（各撮影ページの「作例を見る」用）
+      (function(){
+        var m = /[?&]genre=([^&]+)/.exec(location.search);
+        if(!m) return;
+        var g = decodeURIComponent(m[1]);
+        [].forEach.call(tabs.children, function(x){
+          var on = x.getAttribute("data-genre") === g;
+          x.classList.toggle("is-active", on);
+          if(on) cur = g;
+        });
+      })();
       // ライトボックス（写真クリックで拡大表示）
       var lb = document.getElementById("pfLightbox");
       var lbImg = lb ? lb.querySelector("img") : null;
