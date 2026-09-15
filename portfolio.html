@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ポートフォリオ｜arisa newborn photo</title>
   <link rel="stylesheet" href="style.css?v=111" />
+  <style>
+    .portfolio-item img{cursor:zoom-in}
+    .pf-lightbox{position:fixed;inset:0;background:rgba(30,26,22,.9);display:flex;align-items:center;justify-content:center;padding:24px;z-index:1000;opacity:0;transition:opacity .25s ease}
+    .pf-lightbox[hidden]{display:none}
+    .pf-lightbox.is-open{opacity:1}
+    .pf-lightbox img{max-width:92vw;max-height:88vh;width:auto;height:auto;border-radius:6px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+    .pf-lightbox .pf-close{position:absolute;top:16px;right:20px;width:42px;height:42px;border:none;background:rgba(255,255,255,.16);color:#fff;font-size:26px;line-height:1;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center}
+    @media(hover:hover){.pf-lightbox .pf-close:hover{background:rgba(255,255,255,.28)}}
+  </style>
 </head>
 <body>
   <header class="nav"><div class="container nav-inner"><div class="brand"><a href="index.html">arisa newborn photo</a></div><input id="nav-toggle" class="nav-checkbox" type="checkbox" /><label class="nav-toggle" for="nav-toggle" aria-label="メニューを開閉"><span></span><span></span><span></span></label><nav class="nav-links"><a href="index.html">Home</a><a href="index.html#service">Menu</a><a href="photogoods.html">Goods</a><a href="portfolio.html">Portfolio</a><a href="profile.html">Profile</a><a href="index.html#contact">Contact</a></nav></div></header>
@@ -21,13 +30,15 @@
       </div>
       <div class="portfolio-grid" id="pfGrid"><p class="pf-loading">読み込み中…</p></div>
     </div></section>
+    <div id="pfLightbox" class="pf-lightbox" hidden><button type="button" class="pf-close" aria-label="閉じる">×</button><img src="" alt=""></div>
     <script>
     (function () {
       var GAS = "https://script.google.com/macros/s/AKfycbwyTGqFWYDZLqw2m48hkjLvagRh1kB7Pk2BoDJzQa9OkiJ6UAC_roNF7JlDokYa-M5xpw/exec";
       var grid = document.getElementById("pfGrid");
       var tabs = document.getElementById("pfTabs");
       var all = [], cur = "", loaded = false;
-      var SUB_ORDER = ["ロケーション", "ミルクバス", "フラワー", "フォトブース"];
+      var SUB_ORDER = ["ロケーション", "フォトブース", "フラワー", "ミルクバス"];
+      var SUB_LABEL = { "フラワー": "フラワーフォトブース" };
       var GENRE_ORDER = ["ニューボーン", "マタニティ", "お宮参り", "アニバーサリー"];
       function esc(s){ return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
       function itemsHtml(list){
@@ -53,7 +64,7 @@
           groups.forEach(function(name){
             var g = list.filter(function(p){ return (p.sub || "その他") === name; });
             if(!g.length) return;
-            html += '<div class="pf-group"><h3 class="pf-subhead">'+esc(name)+'</h3><div class="portfolio-grid">'+itemsHtml(g)+'</div></div>';
+            html += '<div class="pf-group"><h3 class="pf-subhead">'+esc(SUB_LABEL[name] || name)+'</h3><div class="portfolio-grid">'+itemsHtml(g)+'</div></div>';
           });
           grid.innerHTML = html;
           return;
@@ -72,6 +83,15 @@
         [].forEach.call(tabs.children, function(x){ x.classList.toggle("is-active", x === b); });
         render();
       });
+      // ライトボックス（写真クリックで拡大表示）
+      var lb = document.getElementById("pfLightbox");
+      var lbImg = lb ? lb.querySelector("img") : null;
+      function openLb(src, alt){ if(!lb) return; lbImg.src = src; lbImg.alt = alt || ""; lb.hidden = false; requestAnimationFrame(function(){ lb.classList.add("is-open"); }); document.body.style.overflow = "hidden"; }
+      function closeLb(){ if(!lb) return; lb.classList.remove("is-open"); document.body.style.overflow = ""; setTimeout(function(){ lb.hidden = true; lbImg.src = ""; }, 250); }
+      grid.addEventListener("click", function(e){ var im = e.target.closest(".portfolio-item img"); if(!im) return; openLb(im.getAttribute("src"), im.getAttribute("alt")); });
+      if(lb){ lb.addEventListener("click", function(e){ if(e.target === lb || e.target.classList.contains("pf-close")) closeLb(); }); }
+      document.addEventListener("keydown", function(e){ if(e.key === "Escape") closeLb(); });
+
       var s = document.createElement("script");
       s.src = GAS + "?action=portfolio&callback=__onPortfolio";
       s.onerror = function(){ grid.innerHTML = '<p class="pf-loading">写真の読み込みに失敗しました。時間をおいて再度お試しください。</p>'; };
