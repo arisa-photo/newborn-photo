@@ -28,14 +28,22 @@
       var tabs = document.getElementById("pfTabs");
       var all = [], cur = "", loaded = false;
       var SUB_ORDER = ["ロケーション", "ミルクバス", "フラワー", "フォトブース"];
+      var GENRE_ORDER = ["ニューボーン", "マタニティ", "お宮参り", "アニバーサリー"];
       function esc(s){ return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
       function itemsHtml(list){
         return list.map(function(p){
           return '<div class="portfolio-item"><img loading="lazy" src="'+esc(p.url)+'" alt="'+esc(p.title||"作品")+'"></div>';
         }).join("");
       }
+      function orderedAll(){
+        // 「すべて」はジャンルのまとまり順に。各ジャンル内はGAS(並び順)の順を維持
+        var out = [];
+        GENRE_ORDER.forEach(function(g){ out = out.concat(all.filter(function(p){ return p.genre === g; })); });
+        all.forEach(function(p){ if(GENRE_ORDER.indexOf(p.genre) < 0) out.push(p); });
+        return out;
+      }
       function render(){
-        var list = cur ? all.filter(function(p){ return p.genre === cur; }) : all;
+        var list = cur ? all.filter(function(p){ return p.genre === cur; }) : orderedAll();
         if(!list.length){ grid.classList.remove("pf-grouped"); grid.innerHTML = '<p class="pf-loading">この分類の写真は準備中です。</p>'; return; }
         if(cur === "アニバーサリー"){
           grid.classList.add("pf-grouped");
