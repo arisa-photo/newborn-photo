@@ -4,19 +4,19 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ニューボーンフォト ご予約｜arisa newborn photo</title>
-  <link rel="stylesheet" href="style.css?v=108" />
+  <link rel="stylesheet" href="style.css?v=116" />
   <style>.br-sp{display:none}@media(max-width:560px){.br-sp{display:inline}.done-msg{font-size:14px;letter-spacing:.02em}}</style>
 </head>
 <body>
   <header class="nav"><div class="container nav-inner"><div class="brand"><a href="index.html">arisa newborn photo</a></div><input id="nav-toggle" class="nav-checkbox" type="checkbox" /><label class="nav-toggle" for="nav-toggle" aria-label="メニューを開閉"><span></span><span></span><span></span></label><nav class="nav-links"><a href="index.html">Home</a><a href="index.html#service">Menu</a><a href="photogoods.html">Goods</a><a href="portfolio.html">Portfolio</a><a href="profile.html">Profile</a><a href="index.html#contact">Contact</a></nav></div></header>
   <main>
-    <div class="page-head container"><a class="backlink" href="newborn.html">ニューボーンフォトのページに戻る</a><div id="headBlock" style="margin-top:18px"><span class="eyebrow">Newborn reservation</span><h1>ニューボーンフォト<br class="br-sp">ご予約</h1><p id="formIntro" style="text-align:center">妊娠おめでとうございます♪<br>ご予約をご希望の方は<br>こちらのフォームに入力して送信してください</p><div class="page-head-image"><img src="写真フォルダ/photo/頬杖.jpg" alt="ニューボーンフォト" style="height:320px;object-fit:cover;object-position:center 40%"></div></div></div>
+    <div class="page-head container compact"><a class="backlink" href="newborn.html">ニューボーンフォトのページに戻る</a><div id="headBlock" style="margin-top:10px"><span class="eyebrow">Newborn reservation</span><h1>ニューボーンフォト<br class="br-sp">ご予約</h1><p id="formIntro" style="text-align:center">妊娠おめでとうございます♪<br>ご予約をご希望の方は<br>こちらのフォームに入力して送信してください</p><div class="page-head-image"><img src="写真フォルダ/photo/頬杖.jpg" alt="ニューボーンフォト" style="height:210px;object-fit:cover;object-position:center 40%"></div></div></div>
 
     <section><div class="container">
       <form id="bookForm" class="form-wrap" novalidate>
 
         <div class="form-agree">
-          <h3>撮影に関する利用規約・キャンセルポリシーについて</h3>
+          <h3>撮影に関する利用規約・キャンセルポリシーについて<span class="req">必須</span></h3>
           <div class="links">
             <a href="https://friendly-pudding-f16.notion.site/2e8e9930523b80b996f8cd3644432b42" target="_blank" rel="noreferrer">▶︎利用規約</a>
             <a href="https://friendly-pudding-f16.notion.site/2e8e9930523b802dabafe83411f1c668" target="_blank" rel="noreferrer">▶︎キャンセルポリシー</a>
@@ -45,10 +45,10 @@
           <label for="f-address">撮影希望の住所</label>
           <div class="zip-inline">
             <input type="text" id="f-zip" name="zip" inputmode="numeric" maxlength="8" autocomplete="postal-code" placeholder="郵便番号（例：8300033）">
-            <button type="button" id="zipBtn">交通費を計算</button>
+            <button type="button" id="zipBtn">住所を自動入力</button>
           </div>
           <input type="text" id="f-address" name="address" placeholder="住所（番地・建物名まで）" style="margin-top:8px">
-          <p class="form-hint">郵便番号を入れて「交通費を計算」を押すと、交通費の目安が料金に反映されます。番地・建物名まで記載ください。</p>
+          <p class="form-hint">郵便番号を入れて「住所を自動入力」を押すと、住所（町名まで）が入力され、交通費の目安も料金に反映されます。番地・建物名は続けてご記入ください。</p>
           <p id="zipResult" class="form-hint" style="margin-top:6px"></p>
         </div>
 
@@ -82,7 +82,7 @@
           <p class="form-hint" style="margin-top:0;margin-bottom:10px">あてはまるものをすべてお選びください</p>
           <div class="choice-grid">
             <label><input type="checkbox" name="options" value="なし">なし</label>
-            <label><input type="checkbox" name="options" value="土日、祝日、年末年始 3000円">土日、祝日、年末年始　3000円</label>
+            <label><input type="checkbox" name="options" value="土日、祝日、年末年始 0円（無料）">土日、祝日、年末年始　<s style="opacity:.55">3000円</s>　0円</label>
             <label><input type="checkbox" name="options" value="プチ生花 3000円">プチ生花　3000円</label>
             <label><input type="checkbox" name="options" value="生花 5000円">生花　5000円</label>
             <label><input type="checkbox" name="options" value="双子 10000円">双子　10000円</label>
@@ -144,7 +144,7 @@
 
         <div class="form-field">
           <label>料金の目安</label>
-          <div class="form-total"><span>合計料金</span><strong id="estTotal">プランをお選びください</strong></div>
+          <div class="form-total"><span>合計料金</span><strong id="estTotal" class="is-msg">プランをお選びください</strong></div>
           <div class="est-breakdown">
             <div><span>プラン</span><span id="estPlan">—</span></div>
             <div><span>オプション</span><span id="estOptions">—</span></div>
@@ -240,6 +240,7 @@
     var zipInput = document.getElementById("f-zip");
     var zipBtn = document.getElementById("zipBtn");
     var zipResult = document.getElementById("zipResult");
+    var addressInput = document.getElementById("f-address");
     var KURUME = { lat: 33.312266, lng: 130.521143 };
     var areaCoords = { "830":{n:"久留米市中心部",lat:33.312266,lng:130.521143},"831":{n:"久留米市周辺",lat:33.34,lng:130.55},"832":{n:"柳川市",lat:33.163,lng:130.406},"833":{n:"筑後市",lat:33.209,lng:130.508},"834":{n:"八女市",lat:33.211,lng:130.556},"835":{n:"みやま市",lat:33.152,lng:130.475},"836":{n:"大牟田市",lat:33.030,lng:130.446},"838":{n:"朝倉市",lat:33.415,lng:130.664},"839":{n:"うきは市",lat:33.325,lng:130.771},"810":{n:"福岡市中央区",lat:33.589,lng:130.402},"812":{n:"福岡市博多区",lat:33.590,lng:130.421},"814":{n:"福岡市早良区",lat:33.578,lng:130.353},"815":{n:"福岡市南区",lat:33.560,lng:130.436},"818":{n:"筑紫野市",lat:33.497,lng:130.548},"820":{n:"飯塚市",lat:33.646,lng:130.691},"840":{n:"佐賀市",lat:33.263,lng:130.301},"841":{n:"鳥栖市",lat:33.376,lng:130.507} };
     function distKm(a,b,c,d){var R=6371,r=function(x){return x*Math.PI/180;};var dLat=r(c-a),dLng=r(d-b);var s=Math.pow(Math.sin(dLat/2),2)+Math.cos(r(a))*Math.cos(r(c))*Math.pow(Math.sin(dLng/2),2);return R*2*Math.atan2(Math.sqrt(s),Math.sqrt(1-s));}
@@ -247,11 +248,13 @@
     async function calcTravel(){
       var raw=(zipInput.value||"").replace(/[^0-9]/g,"");
       if(raw.length!==7){zipResult.textContent="郵便番号は7桁の数字で入力してください（例：8300033）";travelFee=0;travelLabel="";calcTotal();return;}
-      zipResult.textContent="交通費を計算しています…";zipBtn.disabled=true;
+      zipResult.textContent="住所を検索しています…";zipBtn.disabled=true;
       try{
         var zr=await fetch("https://zipcloud.ibsnet.co.jp/api/search?zipcode="+raw);var zd=await zr.json();
         if(!zd.results||!zd.results.length) throw 0;
         var r=zd.results[0];var addr=r.address1+r.address2+r.address3;
+        // 住所欄に自動入力（町名まで。番地・建物名はこの後に続けて入力）
+        if(addressInput){ addressInput.value=addr; try{ addressInput.focus(); addressInput.setSelectionRange(addr.length,addr.length); }catch(_){} }
         var gr=await fetch("https://nominatim.openstreetmap.org/search?format=json&countrycodes=jp&limit=1&q="+encodeURIComponent("日本 "+addr));var gd=await gr.json();
         if(!gd.length) throw 0;
         var km=distKm(KURUME.lat,KURUME.lng,parseFloat(gd[0].lat),parseFloat(gd[0].lon));var fee=feeFrom(km);var kmR=Math.round(km*10)/10;
@@ -275,6 +278,7 @@
       if (estTrvEl) estTrvEl.textContent = travelText();
       if (!p || p.value.indexOf("悩み中") > -1) {
         estEl.textContent = p ? "プラン確定後に算出します" : "プランをお選びください";
+        estEl.classList.add("is-msg");
         if (estPlanEl) { estPlanEl.textContent = "—"; estOptEl.textContent = "—"; }
         return;
       }
@@ -286,10 +290,30 @@
         optAmt += amount(o.value);
       });
       estEl.textContent = yen(planAmt + optAmt + travelFee);
+      estEl.classList.remove("is-msg");
       if (estPlanEl) { estPlanEl.textContent = yen(planAmt); estOptEl.textContent = yen(optAmt); }
     }
     form.querySelectorAll('input[name="plan"], input[name="options"]').forEach(function (el) {
       el.addEventListener("change", calcTotal);
+    });
+
+    /* オプションの排他ルール：なしは他と併用不可／プチ生花と生花は同時選択不可 */
+    var optionEls = form.querySelectorAll('input[name="options"]');
+    function isNashi(v){ return v.indexOf("なし") === 0; }
+    function isPuchi(v){ return v.indexOf("プチ生花") === 0; }
+    function isNama(v){ return v.indexOf("生花") === 0; } // 「プチ生花」は"プチ"始まりなので該当しない
+    optionEls.forEach(function (el) {
+      el.addEventListener("change", function () {
+        if (!el.checked) return;
+        if (isNashi(el.value)) {
+          optionEls.forEach(function (o) { if (o !== el) o.checked = false; });
+        } else {
+          optionEls.forEach(function (o) { if (isNashi(o.value)) o.checked = false; });
+          if (isPuchi(el.value)) { optionEls.forEach(function (o) { if (isNama(o.value)) o.checked = false; }); }
+          else if (isNama(el.value)) { optionEls.forEach(function (o) { if (isPuchi(o.value)) o.checked = false; }); }
+        }
+        calcTotal();
+      });
     });
     calcTotal();
 

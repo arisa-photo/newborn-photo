@@ -286,6 +286,12 @@ section:has(.flow) .note{margin-top:16px!important}
 .page-head p{color:#5f5851;max-width:640px;margin:0 auto;font-size:14px}
 .page-head-image{margin:24px auto 0;max-width:720px;overflow:hidden;border-radius:24px}
 .page-head-image img{width:100%;display:block;object-fit:cover;object-position:center center}
+/* 予約ページ：上部を約70%に圧縮 */
+.page-head.compact{padding-top:64px}
+.page-head.compact .eyebrow{margin-bottom:8px}
+.page-head.compact h1{margin-bottom:10px}
+.page-head.compact .page-head-image{margin-top:16px}
+@media(max-width:900px){.page-head.compact{padding-top:48px}}
 .backlink{font-size:12px;color:var(--muted)}.backlink:hover{color:var(--accent)}
 .backlink:before{content:"← "}
 @media(max-width:900px){.nav-toggle{display:flex}.nav-links{display:flex;flex-direction:column;position:absolute;top:100%;left:0;width:100%;gap:0;padding:10px 0;border-top:1px solid var(--line);background:#fff;box-shadow:0 20px 40px rgba(0,0,0,.08);opacity:0;visibility:hidden;transform:translateY(-8px);pointer-events:none;transition:opacity .32s ease,transform .32s ease,visibility .32s ease}.nav-checkbox:checked + .nav-toggle + .nav-links{opacity:1;visibility:visible;transform:none;pointer-events:auto}.nav-links a{display:block;padding:10px 18px;border-radius:0;background:none;color:var(--ink);font-size:13px;letter-spacing:.08em}.nav-links a:not(:last-child){border-bottom:1px solid rgba(230,224,216,.9)}.hero-grid,.service-grid,.plans,.flow,.info,.intro-grid,.profile{grid-template-columns:1fr}.hero{min-height:auto}.service > a{width:75%;margin:0 auto}.service img,.service .placeholder{height:auto;aspect-ratio:5/4;width:100%}.plans{gap:14px}section{padding:64px 0}.option-box dd{text-align:right}.hero h1{font-size:30px}.pose-grid{grid-template-columns:1fr 1fr}.pose-item img{height:auto;aspect-ratio:1/1}.profile img{max-width:280px;margin:auto}.page-head{padding:84px 0 0}.pf-strip{grid-template-columns:repeat(3,1fr);grid-auto-rows:auto}.pf-strip img.sq{grid-column:span 1;grid-row:span 1}}
@@ -337,10 +343,11 @@ section:has(.flow) .note{margin-top:16px!important}
 .book-option svg{color:var(--accent);flex:none}
 /* 予約フォーム */
 .form-wrap{max-width:620px;margin:0 auto}
+@media(max-width:560px){.form-wrap{padding-left:14px;padding-right:14px}}
 .form-field{margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid var(--line);text-align:left}
 .form-field:last-of-type{border-bottom:none;padding-bottom:0}
 .form-field>label{display:block;font-size:16px;font-weight:600;color:var(--dark);margin-bottom:12px;letter-spacing:.03em;line-height:1.5}
-.form-field .req{display:inline-block;color:var(--accent);font-size:11px;font-weight:600;margin-left:8px;padding:2px 8px;border:1px solid var(--accent2);border-radius:999px;vertical-align:middle}
+.form-field .req,.form-agree .req{display:inline-block;color:var(--accent);font-size:11px;font-weight:600;margin-left:8px;padding:2px 8px;border:1px solid var(--accent2);border-radius:999px;vertical-align:middle}
 .form-field input,.form-field select,.form-field textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fff;font-size:15px;color:var(--ink);font-family:inherit;box-sizing:border-box}
 .form-field textarea{min-height:110px;resize:vertical}
 .form-field input:focus,.form-field select:focus,.form-field textarea:focus{outline:none;border-color:var(--accent)}
@@ -368,6 +375,7 @@ section:has(.flow) .note{margin-top:16px!important}
 .form-total{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;background:var(--soft);border:1px solid var(--accent2);border-radius:12px}
 .form-total>span{font-size:14px;color:var(--dark);font-weight:600}
 .form-total>strong{font-size:22px;color:var(--accent);letter-spacing:.02em}
+.form-total>strong.is-msg{font-size:14px;font-weight:400;white-space:nowrap;text-align:right}
 .zip-inline{display:flex;gap:8px;align-items:stretch}
 .zip-inline #f-zip{flex:1;width:auto}
 .zip-inline input{flex:1;width:auto;padding:11px 14px;border:1px solid var(--line);border-radius:8px;font-size:14px;color:#4d4740;background:#fff;font-family:inherit}
@@ -389,6 +397,10 @@ section:has(.flow) .note{margin-top:16px!important}
 .form-agree input[type="checkbox"],.choice-grid input[type="checkbox"],.choice-list input[type="checkbox"]{appearance:none;-webkit-appearance:none;width:18px;height:18px;flex:none;border:1.5px solid var(--line);border-radius:4px;background:#fff;cursor:pointer;position:relative;transition:background .15s ease,border-color .15s ease}
 .form-agree input[type="checkbox"]:checked,.choice-grid input[type="checkbox"]:checked,.choice-list input[type="checkbox"]:checked{background:var(--accent);border-color:var(--accent)}
 .form-agree input[type="checkbox"]:checked::after,.choice-grid input[type="checkbox"]:checked::after,.choice-list input[type="checkbox"]:checked::after{content:"";position:absolute;left:5px;top:1px;width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+/* ラジオボタン：選択時は外側が塗り＋中央の点を白に */
+.choice-grid input[type="radio"],.choice-list input[type="radio"]{appearance:none;-webkit-appearance:none;width:18px;height:18px;flex:none;border:1.5px solid var(--line);border-radius:50%;background:#fff;cursor:pointer;position:relative;transition:background .15s ease,border-color .15s ease}
+.choice-grid input[type="radio"]:checked,.choice-list input[type="radio"]:checked{background:var(--accent);border-color:var(--accent)}
+.choice-grid input[type="radio"]:checked::after,.choice-list input[type="radio"]:checked::after{content:"";position:absolute;inset:5px;border-radius:50%;background:#fff}
 .pose-opt input[type="checkbox"]{appearance:none;-webkit-appearance:none}
 .pose-opt input[type="checkbox"]:checked{background:var(--accent);border-color:var(--accent)}
 .pose-opt input[type="checkbox"]:checked::after{content:"";position:absolute;left:7px;top:3px;width:6px;height:11px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
