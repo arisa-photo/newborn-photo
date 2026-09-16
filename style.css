@@ -134,6 +134,10 @@ section{padding:100px 0}
 @media(hover:hover){.plan-sample:hover{background:var(--dark);color:#fff;border-color:var(--dark);transform:translateY(-2px);box-shadow:0 8px 18px rgba(90,74,58,.18)}}
 .plan-sample:active{transform:translateY(0) scale(.98);filter:brightness(.9)}
 .plan-pose-link{margin-top:30px}
+/* 撮影ページの独立ボタン（作例を見る／ポーズ一覧を見る）は幅を揃える */
+.container>.plan-sample{width:200px}
+/* プランと「作例を見る」ボタンの間隔を2倍に */
+.container>.plan-sample:not(.plan-pose-link){margin-top:32px}
 #pose{scroll-margin-top:84px}
 .plan li.li-note{list-style:none;margin:-1px 0 7px;font-size:11.5px;color:var(--muted);line-height:1.55}
 #shindan{padding-bottom:50px}
